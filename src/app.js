@@ -1,6 +1,13 @@
 function displayTemperature(response) {
-  console.log(response.data.main.temp);
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.temp;
 }
-let apiKey = "16dbd1b981cb512ad69b8f3c1794a804";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid={API key}&units=metric`;
+let apiKey = "141000bebdd425d6oa3ft78e5aca2bd2f";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query={query}&key={key}`;
 axios.get(apiUrl).then(displayTemperature);
